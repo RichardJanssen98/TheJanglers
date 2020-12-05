@@ -39,16 +39,15 @@ public class Healthbar : MonoBehaviour {
       return;
 
     agentHealth.OnHealthChanged += OnHealthChanged;
+    healthBarFill.TweenImageFillAmount(1, 0.5f).SetFrom(0);
 
-    if (initialized) {
-      healthBarFill.TweenImageFillAmount(1, 0.5f).SetFrom(0);
-    }
+    initialized = true;
   }
 
   public void OnHealthChanged(float health, float maxHealth) {
     Debug.Log(health);
     healthBarFill.TweenImageFillAmount(health / maxHealth, 0.5f);
-    Color barColor = Color.Lerp(healthbarColorMax, healthbarColorMin, health / maxHealth);
+    Color barColor = Color.Lerp(healthbarColorMin, healthbarColorMax, health / maxHealth);
     healthBarFill.TweenGraphicColor(barColor, 0.5f);
   }
 }
