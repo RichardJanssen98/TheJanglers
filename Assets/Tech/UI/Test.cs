@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIController : MonoBehaviour {
-  public Movement movement;
-  public Health health;
-  public ProjectileWeapon[] projectileWeapons;
-  public AIBehaviour behaviour;
-
+public class Test : MonoBehaviour {
+  public DialogueData dialogue;
 
   // Start is called before the first frame update
   void Start() {
-    behaviour.InitializeAI(this);
+    Invoke("StartDialogue", 5);
   }
 
   // Update is called once per frame
   void Update() {
 
+  }
+
+  void StartDialogue() {
+    DialogueUI.Instance.StartDialogue(dialogue);
   }
 }
