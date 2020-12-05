@@ -91,7 +91,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6497139413136118121}
-  - component: {fileID: 6497139413136118120}
   - component: {fileID: 6497139413136118122}
   - component: {fileID: 6497139413136118123}
   - component: {fileID: 1737364026}
@@ -118,19 +117,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6497139413136118120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497139413136118124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a26b6130b6f86e4f9b7f8595a832d90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 5045459781601267798, guid: 7c8fdfa506903d145b6c5b05eca894a8, type: 3}
 --- !u!114 &6497139413136118122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1abeda71379d849adbf59dfb1d6b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileWeapon: {fileID: 6497139413136118120}
+  projectileWeapon: {fileID: 6497139413136118120, guid: 5bc2a6c8874ae354ebd18a1bcfc99aef, type: 3}
   movement: {fileID: 1737364023}
 --- !u!61 &6497139413136118123
 BoxCollider2D:
