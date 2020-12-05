@@ -10,6 +10,15 @@ public class InputManager : MonoBehaviour
     {
     }
 
+    public bool ShootButtonPressed()
+    {
+        if (Input.GetAxis("Fire") > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public Vector2 MovementPressed()
     {
         float horizontal = Input.GetAxis("Horizontal");
