@@ -6,7 +6,7 @@ using System;
 public class Health : MonoBehaviour {
   public AgentType agentType;
   public float maxHealth = 100;
-  private float currentHealth;
+  public float currentHealth;
   public event Action<float, float> OnHealthChanged;
 
   private void Awake() {

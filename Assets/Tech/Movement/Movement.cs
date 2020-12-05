@@ -8,14 +8,14 @@ public class Movement : MonoBehaviour {
   public List<Sprite> spritesUp = new List<Sprite>();
   public List<Sprite> spritesDown = new List<Sprite>();
   public List<Sprite> spritesHorizontal = new List<Sprite>();
+  public bool overrideAnimations = false;
 
   private List<Sprite> currentAnimation;
   private int currentSpriteIndex;
   private float walkAnimTime;
 
-  private Vector2 movementDirection;
-  [SerializeField]
-  private float movementSpeed = 5f;
+  public Vector2 movementDirection;
+  public float movementSpeed = 5f;
 
   // Start is called before the first frame update
   void Start() {
@@ -29,7 +29,8 @@ public class Movement : MonoBehaviour {
     if (movementDirection.magnitude > 0.0f) {
       UpdateAnimation();
     }
-    PlayAnimation();
+    if (overrideAnimations == false)
+      PlayAnimation();
   }
 
   public void SetMovementVector(Vector2 movement) {
