@@ -2,33 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour {
-  Player player;
+public class InputManager : MonoBehaviour
+{
+    Player player;
 
-  private void Start() {
-    player = Player.Instance;
-  }
-
-  // Update is called once per frame
-  void Update() {
-    if (ShootButtonPressed()) {
-      player.projectileWeapon.Shoot();
+    private void Start()
+    {
+        player = Player.Instance;
     }
 
-    player.movement.SetMovementVector(GetMovement());
-  }
+    // Update is called once per frame
+    void Update()
+    {
+        if (ShootButtonPressed())
+        {
+            if (player.projectileWeapon != null)
+            {
+                var mouse = Input.mousePosition;
+                var screenPoint = Camera.main.ScreenToWorldPoint(mouse);
+                Vector2 direction = ((Vector2)screenPoint - (Vector2)transform.position).normalized;
 
-  public bool ShootButtonPressed() {
-    if (Input.GetAxis("Fire") > 0) {
-      return true;
+                player.projectileWeapon.Shoot(direction);
+            }
+        }
+        if (GrabButtonPressed())
+        {
+            player.grab.GrabClosestPickup();
+        }
+
+        player.movement.SetMovementVector(GetMovement());
     }
-    return false;
-  }
 
-  public Vector2 GetMovement() {
-    float horizontal = Input.GetAxis("Horizontal");
-    float vertical = Input.GetAxis("Vertical");
+    public bool GrabButtonPressed()
+    {
+        return Input.GetButtonDown("Use");
+    }
 
-    return new Vector2(horizontal, vertical);
-  }
+    public bool ShootButtonPressed()
+    {
+        return Input.GetMouseButton(0);
+    }
+
+    public Vector2 GetMovement()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        return new Vector2(horizontal, vertical);
+    }
 }
