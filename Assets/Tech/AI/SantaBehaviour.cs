@@ -31,7 +31,6 @@ public class SantaBehaviour : AIBehaviour {
       return;
 
     timeBetweenLunges = Mathf.Lerp(minTimeBetweenLunges, maxTimeBetweenLunges, controller.health.currentHealth / controller.health.maxHealth);
-    Debug.Log(timeBetweenLunges);
     if (Time.time - lastLungeTime > timeBetweenLunges) {
       LungeAtPlayer();
       lastLungeTime = Time.time;
@@ -62,19 +61,17 @@ public class SantaBehaviour : AIBehaviour {
     }
     point = movementPoints[currentPointIndex];
     moveDirection = (point - transform.position).normalized;
-    Debug.Log(moveDirection);
   }
 
   private void LungeAtPlayer() {
     lastPlayerPosition = Player.Instance.transform.position;
-    Debug.Log(lastPlayerPosition);
     controller.movement.overrideAnimations = true;
     controller.movement.movementSpeed = lungeSpeed;
     isLunging = true;
-    moveDirection = (lastPlayerPosition - transform.position).normalized;
   }
 
   private void UpdateLunging() {
+    moveDirection = (lastPlayerPosition - transform.position).normalized;
     float distance = Vector3.Distance(transform.position, lastPlayerPosition);
     if (distance <= 0.1f)
       isLunging = false;

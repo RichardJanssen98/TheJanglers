@@ -5,6 +5,7 @@ using UnityEngine;
 public class AIController : MonoBehaviour {
   public Movement movement;
   public Health health;
+  public ProjectileWeapon projectileWeapon;
   public AIBehaviour behaviour;
 
 

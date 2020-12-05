@@ -10,7 +10,7 @@ public class Health : MonoBehaviour {
   public event Action<float, float> OnHealthChanged;
 
   private void Awake() {
-    maxHealth = currentHealth;
+    currentHealth = maxHealth;
     Healthbar.LinkToHealthbar(this);
   }
 
