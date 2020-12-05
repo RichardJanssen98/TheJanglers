@@ -5,12 +5,11 @@ using UnityEngine;
 public class Grab : MonoBehaviour
 {
     public List<Pickup> pickupsInRange;
-    float closestDistance;
 
     // Start is called before the first frame update
     void Start()
     {
-        closestDistance = 99999999999999;
+        
     }
 
     // Update is called once per frame
@@ -22,6 +21,7 @@ public class Grab : MonoBehaviour
     public void GrabClosestPickup()
     {
         Pickup pickupToGrab = null;
+        float closestDistance = 99999999999999;
         if (pickupsInRange != null)
         {
             foreach (Pickup p in pickupsInRange)
