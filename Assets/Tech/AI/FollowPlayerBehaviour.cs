@@ -35,7 +35,7 @@ public class FollowPlayerBehaviour : AIBehaviour {
 
     foreach (ProjectileWeapon weapon in controller.projectileWeapons) {
       if (weapon.enabled)
-        weapon.Shoot((Player.Instance.transform.position - transform.position).normalize, false, AgentType.Enemy);
+        weapon.Shoot((Player.Instance.transform.position - transform.position).normalized, AgentType.Enemy);
     }
   }
 

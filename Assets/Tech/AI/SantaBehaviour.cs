@@ -66,7 +66,7 @@ public class SantaBehaviour : AIBehaviour {
 
     foreach (ProjectileWeapon weapon in controller.projectileWeapons) {
       if (weapon.enabled)
-        weapon.Shoot((Player.Instance.transform.position - transform.position).normalized);
+        weapon.Shoot((Player.Instance.transform.position - transform.position).normalized, AgentType.Boss);
     }
   }
 
