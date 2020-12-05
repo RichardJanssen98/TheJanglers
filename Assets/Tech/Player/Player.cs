@@ -27,4 +27,12 @@ public class Player : MonoBehaviour {
     DontDestroyOnLoad(this);
   }
 
+  public void OnTriggerEnter2D(Collider2D collision)
+  {
+      if (collision.GetComponent<ProjectileWeapon>() != null)
+      {
+          projectileWeapon = collision.GetComponent<ProjectileWeapon>();
+          collision.gameObject.transform.SetParent(this.transform);
+      }
+  }
 }
