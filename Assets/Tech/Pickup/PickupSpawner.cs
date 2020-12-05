@@ -8,7 +8,7 @@ public class PickupSpawner : MonoBehaviour
     public float spawnTimerCooldown = 3f;
     public List<Present> presentsList;
 
-    public List<Transform> spawnLocations;
+    public List<PickupSpawnPoint> spawnLocations;
 
     // Start is called before the first frame update
     void Start()
@@ -19,37 +19,43 @@ public class PickupSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnInPresent();
+        TimerForSpawning();
+    }
+
+    private void TimerForSpawning()
+    {
+        if (Time.time > spawnTimerStart + spawnTimerCooldown)
+        {
+            SpawnInPresent();
+        }
     }
 
     private void SpawnInPresent()
     {
-        if (Time.time > spawnTimerStart + spawnTimerCooldown)
-        {
-            spawnTimerStart = Time.time;
+        spawnLocations.Shuffle();
+        spawnTimerStart = Time.time;
 
+        if (spawnLocations.Count != 0)
+        {
             int presentNumber = Random.Range(0, presentsList.Count); //-1 because it starts counting at 0
             Present presentToSpawn = presentsList[presentNumber];
 
-            int spawnLocationNumber = Random.Range(0, spawnLocations.Count);
-            Transform spawnLocation = spawnLocations[spawnLocationNumber];
-
-            Instantiate(presentToSpawn.gameObject, spawnLocation.position, Quaternion.identity);
+            foreach (PickupSpawnPoint p in spawnLocations)
+            {
+                if (!p.occupied)
+                {
+                    p.SpawnPresent(presentToSpawn.gameObject);
+                    break;
+                }        
+            }    
         }
     }
 
     private void GetAllSpawnpoints()
     {
         //Get all spawn locations, these should all be children from this object
-        Transform[] pickupSpawnPoints = GetComponentsInChildren<Transform>();
+        PickupSpawnPoint[] pickupSpawnPoints = GetComponentsInChildren<PickupSpawnPoint>();
 
-        for (int i = 0; i < pickupSpawnPoints.Length; i++)
-        {
-            if (i == 0)
-            {
-                continue;
-            }
-            spawnLocations.Add(pickupSpawnPoints[i]);
-        }
+        spawnLocations.AddRange(pickupSpawnPoints);
     }
 }
