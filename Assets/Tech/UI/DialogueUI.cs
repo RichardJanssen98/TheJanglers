@@ -17,6 +17,10 @@ public class DialogueUI : Singleton<DialogueUI> {
 
   private DialogueData currentDialogue;
   private int currentDialogueIndex;
+  private Vector3 hidePosition;
+
+  private void Awake() {
+  }
 
   public void StartDialogue(DialogueData dialogue) {
     currentDialogue = dialogue;
@@ -28,9 +32,17 @@ public class DialogueUI : Singleton<DialogueUI> {
     leftCharacter.enabled = dialogue.characterPosition == DialogueCharacterPosition.Left;
     rightCharacter.enabled = dialogue.characterPosition == DialogueCharacterPosition.Right;
     Image charImg = leftCharacter.enabled ? leftCharacter : rightCharacter;
+
+    if (leftCharacter.enabled)
+      hidePosition = hiddenPosition;
+    else if (rightCharacter.enabled)
+      hidePosition = -hiddenPosition;
+
+    transform.position = hidePosition;
+
     charImg.sprite = dialogue.characterSprite;
     text.text = dialogue.text;
-    container.TweenPosition(showPosition, 0.5f).SetEaseBackInOut().SetOnComplete(() => {
+    container.TweenPosition(showPosition, 1f).SetEaseBackOut().SetOnComplete(() => {
       audioSource.clip = dialogue.voice;
       audioSource.Play();
       container.TweenDelayedInvoke(dialogue.onScreenDuration, HideDialogue);
@@ -38,7 +50,7 @@ public class DialogueUI : Singleton<DialogueUI> {
   }
 
   private void HideDialogue() {
-    container.TweenPosition(hiddenPosition, 0.5f).SetEaseBackInOut().SetOnComplete(() => GoToNext());
+    container.TweenPosition(hidePosition, 1f).SetEaseBackIn().SetOnComplete(() => GoToNext());
   }
 
   public void Skip() {
@@ -48,6 +60,7 @@ public class DialogueUI : Singleton<DialogueUI> {
   }
 
   private void GoToNext() {
+    Debug.Log(transform.position);
     currentDialogueIndex++;
     if (currentDialogueIndex == currentDialogue.dialogues.Count) {
       return;
