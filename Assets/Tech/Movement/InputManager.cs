@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    Player player;
+
+    private void Start()
+    {
+        player = Player.Instance;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (ShootButtonPressed())
+        {
+            player.projectileWeapon.Shoot();
+        }
     }
 
     public bool ShootButtonPressed()
