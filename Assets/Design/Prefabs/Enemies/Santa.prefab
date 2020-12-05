@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 4012771452176607269}
   - component: {fileID: 4012771452176607270}
   - component: {fileID: 1199890430885623712}
+  - component: {fileID: 249998764}
+  - component: {fileID: 249998765}
+  - component: {fileID: 249998766}
   m_Layer: 0
   m_Name: Santa
   m_TagString: Untagged
@@ -94,6 +97,7 @@ MonoBehaviour:
   spritesHorizontal:
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   overrideAnimations: 0
+  currentAnimation: []
   movementDirection: {x: 0, y: 0}
   movementSpeed: 10
 --- !u!114 &4012771452176607269
@@ -110,7 +114,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4012771452176607273}
   health: {fileID: 4012771452176607272}
-  projectileWeapon: {fileID: 0}
+  projectileWeapons:
+  - {fileID: 249998764}
+  - {fileID: 249998765}
+  - {fileID: 249998766}
   behaviour: {fileID: 4012771452176607270}
 --- !u!114 &4012771452176607270
 MonoBehaviour:
@@ -124,13 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e002e7a37a94a63bb683bda6666c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standingAnimation: []
   movementPoints:
   - {x: 6, y: 3, z: 0}
   - {x: -6, y: 3, z: 0}
-  maxTimeBetweenLunges: 10
-  minTimeBetweenLunges: 5
   lungeSpeed: 20
-  moveSpeed: 7.5
 --- !u!58 &1199890430885623712
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,6 +152,57 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &249998764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012771452176607275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a26b6130b6f86e4f9b7f8595a832d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointParent: {fileID: 0}
+  projectile: {fileID: 3106109965736620734, guid: 7c8fdfa506903d145b6c5b05eca894a8, type: 3}
+  shootTimerCooldown: 10
+  ammo: 99999
+  ammoConsumption: 0
+--- !u!114 &249998765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012771452176607275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a26b6130b6f86e4f9b7f8595a832d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointParent: {fileID: 0}
+  projectile: {fileID: 3106109965736620734, guid: 7c8fdfa506903d145b6c5b05eca894a8, type: 3}
+  shootTimerCooldown: 10
+  ammo: 99999
+  ammoConsumption: 0
+--- !u!114 &249998766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012771452176607275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a26b6130b6f86e4f9b7f8595a832d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointParent: {fileID: 0}
+  projectile: {fileID: 3106109965736620734, guid: 7c8fdfa506903d145b6c5b05eca894a8, type: 3}
+  shootTimerCooldown: 1
+  ammo: 10
+  ammoConsumption: 0
 --- !u!1 &4012771452368621434
 GameObject:
   m_ObjectHideFlags: 0
