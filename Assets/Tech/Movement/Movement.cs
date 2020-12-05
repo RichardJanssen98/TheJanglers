@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour {
   public List<Sprite> spritesHorizontal = new List<Sprite>();
   public bool overrideAnimations = false;
 
-  private List<Sprite> currentAnimation;
+  public List<Sprite> currentAnimation;
   private int currentSpriteIndex;
   private float walkAnimTime;
 

@@ -6,6 +6,8 @@ using UnityEngine;
 /// Goes back and forth between the movement points, periodically lunges at player.
 /// </summary>
 public class SantaBehaviour : AIBehaviour {
+  public List<Sprite> standingAnimation = new List<Sprite>();
+
   public List<Vector3> movementPoints = new List<Vector3>();
   public float lungeSpeed = 20;
   public float moveSpeed = 10;
@@ -19,6 +21,7 @@ public class SantaBehaviour : AIBehaviour {
 
   private float baseLungeTime;
   private float baseLungeSpeed;
+  private bool canLunge = false;
   private float lastMoveSpeed;
 
   private float lastDifficultyIncreaseStep = 1;
@@ -44,6 +47,9 @@ public class SantaBehaviour : AIBehaviour {
     baseLungeTime = 4;
     timeBetweenLunges = 4;
     lastLungeTime = Time.time;
+    controller.movement.movementSpeed = 0;
+    controller.movement.overrideAnimations = true;
+    controller.movement.currentAnimation = standingAnimation;
   }
 
   // Update is called once per frame
@@ -85,6 +91,7 @@ public class SantaBehaviour : AIBehaviour {
 
   public override void UpdateDifficulty() {
     base.UpdateDifficulty();
+    lastLungeTime = Time.time;
     lungeSpeed = baseLungeSpeed * GameManager.Instance.difficulty;
     timeBetweenLunges = baseLungeTime / GameManager.Instance.difficulty;
     if (isLunging) {
