@@ -33,6 +33,18 @@ public class Health : MonoBehaviour {
   }
 
   public void Kill() {
-    /// kill funct. depends on agent type.
+    switch (agentType) {
+      case AgentType.Player:
+        /// Game over!
+        break;
+      case AgentType.Boss:
+        /// Destroy boss obj.
+        /// Open level complete popup.
+        break;
+      case AgentType.Enemy:
+        /// Play destruction effect.
+        /// Destroy enemy obj.
+        break;
+    }
   }
 }
