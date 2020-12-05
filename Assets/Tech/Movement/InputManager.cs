@@ -2,52 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
-{
-    Player player;
+public class InputManager : MonoBehaviour {
+  Player player;
 
-    private void Start()
-    {
-        player = Player.Instance;
+  private void Start() {
+    player = Player.Instance;
+  }
+
+  // Update is called once per frame
+  void Update() {
+    if (ShootButtonPressed()) {
+      if (player.projectileWeapon != null) {
+        var mouse = Input.mousePosition;
+        var screenPoint = Camera.main.ScreenToWorldPoint(mouse);
+        Vector2 direction = ((Vector2)screenPoint - (Vector2)transform.position).normalized;
+
+        player.projectileWeapon.Shoot(direction, AgentType.Player);
+      }
+    }
+    if (GrabButtonPressed()) {
+      player.grab.GrabClosestPickup();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (ShootButtonPressed())
-        {
-            if (player.projectileWeapon != null)
-            {
-                var mouse = Input.mousePosition;
-                var screenPoint = Camera.main.ScreenToWorldPoint(mouse);
-                Vector2 direction = ((Vector2)screenPoint - (Vector2)transform.position).normalized;
+    player.movement.SetMovementVector(GetMovement());
+  }
 
-                player.projectileWeapon.Shoot(direction, true, AgentType.Player);
-            }
-        }
-        if (GrabButtonPressed())
-        {
-            player.grab.GrabClosestPickup();
-        }
+  public bool GrabButtonPressed() {
+    return Input.GetButtonDown("Use");
+  }
 
-        player.movement.SetMovementVector(GetMovement());
-    }
+  public bool ShootButtonPressed() {
+    return Input.GetMouseButton(0);
+  }
 
-    public bool GrabButtonPressed()
-    {
-        return Input.GetButtonDown("Use");
-    }
+  public Vector2 GetMovement() {
+    float horizontal = Input.GetAxis("Horizontal");
+    float vertical = Input.GetAxis("Vertical");
 
-    public bool ShootButtonPressed()
-    {
-        return Input.GetMouseButton(0);
-    }
-
-    public Vector2 GetMovement()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        return new Vector2(horizontal, vertical);
-    }
+    return new Vector2(horizontal, vertical);
+  }
 }
