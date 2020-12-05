@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
                 var screenPoint = Camera.main.ScreenToWorldPoint(mouse);
                 Vector2 direction = ((Vector2)screenPoint - (Vector2)transform.position).normalized;
 
-                player.projectileWeapon.Shoot(direction);
+                player.projectileWeapon.Shoot(direction, true, AgentType.Player);
             }
         }
         if (GrabButtonPressed())

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4012771452176607273}
   - component: {fileID: 4012771452176607269}
   - component: {fileID: 4012771452176607270}
+  - component: {fileID: 1199890430885623712}
   m_Layer: 0
   m_Name: Santa
   m_TagString: Untagged
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4012771452176607273}
   health: {fileID: 4012771452176607272}
+  projectileWeapon: {fileID: 0}
   behaviour: {fileID: 4012771452176607270}
 --- !u!114 &4012771452176607270
 MonoBehaviour:
@@ -129,6 +131,22 @@ MonoBehaviour:
   minTimeBetweenLunges: 5
   lungeSpeed: 20
   moveSpeed: 7.5
+--- !u!58 &1199890430885623712
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012771452176607275}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &4012771452368621434
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +217,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public AgentType agentType;
     public float damage;
     public float movementSpeed;
 

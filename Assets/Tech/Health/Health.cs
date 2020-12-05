@@ -47,4 +47,15 @@ public class Health : MonoBehaviour {
         break;
     }
   }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Projectile projectile = collision.GetComponent<Projectile>();
+
+        if (projectile != null && projectile.agentType != this.agentType)
+        {
+            TakeDamage(projectile.damage);
+            Destroy(projectile.gameObject);
+        }
+    }
 }
