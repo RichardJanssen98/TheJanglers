@@ -7,6 +7,8 @@ public class ProjectileWeapon : MonoBehaviour
     [SerializeField]
     private GameObject projectile;
 
+    private float shootTimerStart = 0f;
+    public float shootTimerCooldown = 1f;
 
     // Update is called once per frame
     void Update()
@@ -16,6 +18,10 @@ public class ProjectileWeapon : MonoBehaviour
 
     public void Shoot()
     {
-        GameObject.Instantiate(projectile, this.transform.position, this.transform.rotation);
+        if (Time.time > shootTimerStart + shootTimerCooldown)
+        {
+            shootTimerStart = Time.time;
+            GameObject.Instantiate(projectile, this.transform.position, this.transform.rotation);
+        }
     }
 }
