@@ -10,7 +10,6 @@ public class SantaBehaviour : AIBehaviour {
 
   public List<Vector3> movementPoints = new List<Vector3>();
   public float lungeSpeed = 20;
-  public float moveSpeed = 10;
 
   private int currentPointIndex = 0;
   private float lastLungeTime = 0.0f;
@@ -31,7 +30,7 @@ public class SantaBehaviour : AIBehaviour {
   void Start() {
     lastLungeTime = Time.time;
 
-    controller.health.OnHealthChanged += CheckHealthDifficultyIncrease;
+
   }
 
   private void CheckHealthDifficultyIncrease(float current, float max) {
@@ -43,6 +42,7 @@ public class SantaBehaviour : AIBehaviour {
 
   public override void InitializeAI(AIController controller) {
     base.InitializeAI(controller);
+    controller.health.OnHealthChanged += CheckHealthDifficultyIncrease;
     baseLungeSpeed = lungeSpeed;
     baseLungeTime = 4;
     timeBetweenLunges = 4;
@@ -57,7 +57,7 @@ public class SantaBehaviour : AIBehaviour {
     if (controller == null)
       return;
 
-    if (Time.time - lastLungeTime > timeBetweenLunges) {
+    if (Time.time - lastLungeTime > timeBetweenLunges && canLunge) {
       LungeAtPlayer();
       lastLungeTime = Time.time;
     }
@@ -77,7 +77,6 @@ public class SantaBehaviour : AIBehaviour {
   }
 
   private void UpdateMovement() {
-    controller.movement.movementSpeed = moveSpeed;
     Vector3 point = movementPoints[currentPointIndex];
     float distance = Vector3.Distance(transform.position, point);
     if (distance < 0.1f) {
@@ -91,7 +90,9 @@ public class SantaBehaviour : AIBehaviour {
 
   public override void UpdateDifficulty() {
     base.UpdateDifficulty();
+    controller.movement.overrideAnimations = false;
     lastLungeTime = Time.time;
+    canLunge = true;
     lungeSpeed = baseLungeSpeed * GameManager.Instance.difficulty;
     timeBetweenLunges = baseLungeTime / GameManager.Instance.difficulty;
     if (isLunging) {
