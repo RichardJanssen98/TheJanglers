@@ -10,10 +10,11 @@ public class ProjectileWeapon : MonoBehaviour
     private float shootTimerStart = 0f;
     public float shootTimerCooldown = 1f;
 
+    public float angle;
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void Shoot()
@@ -21,7 +22,9 @@ public class ProjectileWeapon : MonoBehaviour
         if (Time.time > shootTimerStart + shootTimerCooldown)
         {
             shootTimerStart = Time.time;
-            GameObject.Instantiate(projectile, this.transform.position, this.transform.rotation);
+            
+
+            GameObject.Instantiate(projectile, this.transform.position, Quaternion.identity);
         }
     }
 }
