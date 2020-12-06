@@ -158,7 +158,7 @@ MonoBehaviour:
   agentType: 2
   maxHealth: 500
   currentHealth: 500
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1114105156}
   deathSoundClip: {fileID: 0}
 --- !u!114 &4012771452176607273
 MonoBehaviour:
@@ -248,9 +248,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.22132748}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.7863217
 --- !u!114 &249998764
 MonoBehaviour:
   m_ObjectHideFlags: 0
