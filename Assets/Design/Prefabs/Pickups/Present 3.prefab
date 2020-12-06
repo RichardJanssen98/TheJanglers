@@ -101,6 +101,8 @@ MonoBehaviour:
   spawnPointParent: {fileID: 0}
   projectileWeaponsToSpawn:
   - {fileID: 8603507396185347144, guid: 35a36ecc8e132c0459419e901481bde6, type: 3}
+  - {fileID: 2147657928699807216, guid: 6335d49c0039005448f1ed6441ae57e4, type: 3}
+  - {fileID: 8773674956889719245, guid: 0e9cbb1870a85cf4c9d1e7492e94a149, type: 3}
 --- !u!50 &-2681095836000457412
 Rigidbody2D:
   serializedVersion: 4
