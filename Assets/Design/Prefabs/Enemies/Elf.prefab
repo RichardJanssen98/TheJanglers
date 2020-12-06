@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentType: 1
-  maxHealth: 100
-  currentHealth: 0
+  maxHealth: 10
+  currentHealth: 10
   audioSource: {fileID: -4132476784159451129}
   deathSoundClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
 --- !u!114 &293142885756790435
@@ -93,6 +93,7 @@ MonoBehaviour:
   spritesHorizontal:
   - {fileID: 21300000, guid: beead9c29bb7e2841baa56a74d327eea, type: 3}
   overrideAnimations: 0
+  overridePlayAnimation: 0
   mirror: 0
   currentAnimation: []
   movementDirection: {x: 0, y: 0}
