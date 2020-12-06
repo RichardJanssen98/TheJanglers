@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Grab : MonoBehaviour {
   public List<Pickup> pickupsInRange;
+    public AudioSource pickupAudioSource;
 
   // Start is called before the first frame update
   void Start() {
-
-  }
+        pickupAudioSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
+    }
 
   // Update is called once per frame
   void Update() {
@@ -39,7 +40,8 @@ public class Grab : MonoBehaviour {
       }
 
       pickupToGrab.PickupObject();
-      pickupsInRange.Remove(pickupToGrab);
+            pickupAudioSource.Play();
+            pickupsInRange.Remove(pickupToGrab);
     }
   }
 
