@@ -54,7 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 293142885756790435}
   health: {fileID: 293142885756790434}
-  projectileWeapons: []
+  projectileWeapons:
+  - {fileID: 293142885756790447}
   behaviour: {fileID: 293142885756790432}
 --- !u!114 &293142885756790434
 MonoBehaviour:
@@ -94,8 +95,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 05cebdd7845d45744be23aa6c9128cfe, type: 3}
   spritesHorizontal:
   - {fileID: 21300000, guid: beead9c29bb7e2841baa56a74d327eea, type: 3}
-  overrideAnimations: 0
   overridePlayAnimation: 0
+  spritesWeaponUp: []
+  spritesWeaponDown: []
+  spritesWeaponHorizontal: []
+  holdingWeapon: 0
+  overrideAnimations: 0
   mirror: 0
   currentAnimation: []
   movementDirection: {x: 0, y: 0}
@@ -126,9 +131,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPointParent: {fileID: 0}
-  projectile: {fileID: 3106109965736620734, guid: 7c8fdfa506903d145b6c5b05eca894a8, type: 3}
+  projectile: {fileID: 3106109965736620734, guid: 5a1535eb849902541b1b0879545f0f78, type: 3}
   audioSource: {fileID: -4132476784159451129}
-  shootingSoundClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
+  shootingSoundClip: {fileID: 8300000, guid: 96b274c1b6aeef240915c464d5e593f1, type: 3}
+  SpritesUp: []
+  SpritesDown: []
+  SpritesHorizontal: []
   shootTimerCooldown: 1
   ammo: 10
   ammoConsumption: 1

@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPointParent: {fileID: 0}
-  projectile: {fileID: 3106109965736620734, guid: 7c8fdfa506903d145b6c5b05eca894a8, type: 3}
+  projectile: {fileID: 3106109965736620734, guid: 5a1535eb849902541b1b0879545f0f78, type: 3}
   audioSource: {fileID: 841586580577195992}
-  shootingSoundClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
+  shootingSoundClip: {fileID: 8300000, guid: 80c886a1d3debea46ad56fc41e4c6b70, type: 3}
   SpritesUp:
   - {fileID: 21300000, guid: 62d33390bcf1b6d4cbd9968d48232f0a, type: 3}
   - {fileID: 21300000, guid: 1ff3dee267965f94e8908c7d45e01506, type: 3}
