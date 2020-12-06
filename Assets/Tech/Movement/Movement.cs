@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour {
   public List<Sprite> spritesDown = new List<Sprite>();
   public List<Sprite> spritesHorizontal = new List<Sprite>();
   public bool overrideAnimations = false;
+  public bool mirror = false;
 
   public List<Sprite> currentAnimation;
   private int currentSpriteIndex;
@@ -26,11 +27,16 @@ public class Movement : MonoBehaviour {
   // Update is called once per frame
   void Update() {
     Move();
-    if (movementDirection.magnitude > 0.0f) {
+    if (movementDirection.magnitude > 0.0f && overrideAnimations == false) {
       UpdateAnimation();
     }
-    if (overrideAnimations == false)
-      PlayAnimation();
+
+    if (mirror)
+      charSpriteRenderer.transform.localScale = new Vector3(-1, 1, 1);
+    else
+      charSpriteRenderer.transform.localScale = new Vector3(1, 1, 1);
+
+    PlayAnimation();
   }
 
   public void SetMovementVector(Vector2 movement) {
@@ -43,16 +49,17 @@ public class Movement : MonoBehaviour {
 
   private void UpdateAnimation() {
     if (Mathf.Abs(movementDirection.y) > Mathf.Abs(movementDirection.x)) {
+      mirror = false;
       if (movementDirection.y > 0)
         currentAnimation = spritesUp;
       else
         currentAnimation = spritesDown;
     } else {
       if (movementDirection.x < 0) {
-        charSpriteRenderer.transform.localScale = new Vector3(1, 1, 1);
+        mirror = false;
         currentAnimation = spritesHorizontal;
       } else {
-        charSpriteRenderer.transform.localScale = new Vector3(-1, 1, 1);
+        mirror = true;
         currentAnimation = spritesHorizontal;
       }
     }

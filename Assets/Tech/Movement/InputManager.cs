@@ -7,14 +7,37 @@ public class InputManager : MonoBehaviour {
 
   private void Start() {
     player = Player.Instance;
+    player.movement.overrideAnimations = true;
   }
 
   // Update is called once per frame
   void Update() {
+    if (GameManager.Instance.gameFrozen)
+      return;
+
+    Vector3 mouse = Input.mousePosition;
+    Vector3 screenPoint = Camera.main.ScreenToWorldPoint(mouse);
+    Vector2 lookDir = screenPoint - player.transform.position;
+    Debug.Log(lookDir);
+
+    if (Mathf.Abs(lookDir.x) > Mathf.Abs(lookDir.y)) {
+      player.movement.currentAnimation = player.movement.spritesHorizontal;
+      if (lookDir.x < 0) {
+        player.movement.mirror = false;
+      } else {
+        player.movement.mirror = true;
+      }
+    } else {
+      player.movement.mirror = false;
+      if (lookDir.y > 0) {
+        player.movement.currentAnimation = player.movement.spritesUp;
+      } else {
+        player.movement.currentAnimation = player.movement.spritesDown;
+      }
+    }
+
     if (ShootButtonPressed()) {
       if (player.projectileWeapon != null) {
-        var mouse = Input.mousePosition;
-        var screenPoint = Camera.main.ScreenToWorldPoint(mouse);
         Vector2 direction = ((Vector2)screenPoint - (Vector2)transform.position).normalized;
 
         player.projectileWeapon.Shoot(direction, AgentType.Player);
