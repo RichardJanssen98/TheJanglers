@@ -8,18 +8,26 @@ public class AmmoBar : Singleton<AmmoBar>
     public Image ammoImage;
 
     public List<Image> ammoImages;
-    
+    HorizontalLayoutGroup horizontalLayoutGroup;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        horizontalLayoutGroup = gameObject.GetComponentInChildren<HorizontalLayoutGroup>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (ammoImages.Count > 10)
+        {
+            horizontalLayoutGroup.childControlWidth = true;
+        }
+        else
+        {
+            horizontalLayoutGroup.childControlWidth = false;
+        }
     }
 
     public void RemoveAmmo(int amount)
