@@ -54,6 +54,9 @@ public class SantaBehaviour : AIBehaviour {
 
   // Update is called once per frame
   void Update() {
+    if (GameManager.Instance.gameFrozen)
+      return;
+
     if (controller == null)
       return;
 

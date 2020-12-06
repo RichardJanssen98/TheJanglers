@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager> {
 
   private const float difficultyStep = 0.1f;
 
+  public bool gameFrozen = false;
+
   public void StartGame() {
     difficulty = baseDifficulty;
   }

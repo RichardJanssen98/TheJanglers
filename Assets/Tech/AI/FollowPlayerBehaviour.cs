@@ -22,6 +22,9 @@ public class FollowPlayerBehaviour : AIBehaviour {
 
   // Update is called once per frame
   void Update() {
+    if (GameManager.Instance.gameFrozen)
+      return;
+
     if (Time.time - lastTrackTime >= updatePositionInterval) {
       lastKnownPlayerPosition = Player.Instance.transform.position;
       lastTrackTime = Time.time;
