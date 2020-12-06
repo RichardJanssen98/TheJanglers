@@ -12,6 +12,7 @@ public class ProjectileWeapon : Pickup
     public float ammo = 10f;
     public float ammoConsumption = 1f;
     public float projectilesPerShot = 1f;
+    public float projectileDamageOverride = 5f;
 
     // Update is called once per frame
     void Update()
