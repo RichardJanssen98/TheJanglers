@@ -28,7 +28,7 @@ public class DialogueUI : Singleton<DialogueUI> {
     ShowDialogue(dialogue.dialogues[0]);
   }
 
-  private void ShowDialogue(Dialogue dialogue) {
+  private void ShowDialogue(Dialogue dialogue, bool instant = false) {
     leftCharacter.enabled = dialogue.characterPosition == DialogueCharacterPosition.Left;
     rightCharacter.enabled = dialogue.characterPosition == DialogueCharacterPosition.Right;
     Image charImg = leftCharacter.enabled ? leftCharacter : rightCharacter;
@@ -42,30 +42,43 @@ public class DialogueUI : Singleton<DialogueUI> {
 
     charImg.sprite = dialogue.characterSprite;
     text.text = dialogue.text;
-    container.TweenPosition(showPosition, 1f).SetEaseBackOut().SetOnComplete(() => {
+
+    if (instant) {
+      container.transform.position = showPosition;
+      audioSource.Play();
+      container.TweenDelayedInvoke(dialogue.onScreenDuration, () => HideDialogue(dialogue));
+    }
+
+
+    container.TweenPosition(showPosition, 0.5f).SetEaseBackOut().SetOnComplete(() => {
       audioSource.clip = dialogue.voice;
       audioSource.Play();
-      container.TweenDelayedInvoke(dialogue.onScreenDuration, HideDialogue);
+      container.TweenDelayedInvoke(dialogue.onScreenDuration, () => HideDialogue(dialogue));
     });
   }
 
-  private void HideDialogue() {
-    container.TweenPosition(hidePosition, 1f).SetEaseBackIn().SetOnComplete(() => GoToNext());
+  private void HideDialogue(Dialogue dialogue) {
+    if (dialogue.keepVisible) {
+      GoToNext(true);
+      return;
+    }
+
+    container.TweenPosition(hidePosition, 0.5f).SetEaseBackIn().SetOnComplete(() => GoToNext());
   }
 
   public void Skip() {
     container.TweenCancelAll();
     audioSource.Stop();
-    HideDialogue();
+    HideDialogue(currentDialogue.dialogues[currentDialogueIndex]);
   }
 
-  private void GoToNext() {
+  private void GoToNext(bool instant = false) {
     Debug.Log(transform.position);
     currentDialogueIndex++;
     if (currentDialogueIndex == currentDialogue.dialogues.Count) {
       return;
     } else {
-      ShowDialogue(currentDialogue.dialogues[currentDialogueIndex]);
+      ShowDialogue(currentDialogue.dialogues[currentDialogueIndex], instant);
     }
   }
 }

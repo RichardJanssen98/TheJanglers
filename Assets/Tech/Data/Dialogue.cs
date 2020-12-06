@@ -9,6 +9,7 @@ public class Dialogue {
   public AudioClip voice;
   public float onScreenDuration;
   public DialogueCharacterPosition characterPosition;
+  public bool keepVisible;
 }
 
 public enum DialogueCharacterPosition {

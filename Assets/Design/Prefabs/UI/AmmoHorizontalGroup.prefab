@@ -75,5 +75,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786b3a78edb28c248ad0cbec72d15c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoImage: {fileID: 0}
+  ammoImage: {fileID: 5343208475062921004, guid: 91467510e5d275c4bb305982d4c8bba9, type: 3}
   ammoImages: []
