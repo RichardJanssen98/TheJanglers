@@ -15,8 +15,14 @@ public class ProjectileWeapon : Pickup {
   public float projectilesPerShot = 1f;
   public float projectileDamageOverride = 5f;
 
-  // Update is called once per frame
-  void Update() {
+
+    private void Start()
+    {
+        shootingAudioSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
+    }
+
+    // Update is called once per frame
+    void Update() {
     if (ammo <= 0) {
       Destroy(this.gameObject);
       Player.Instance.projectileWeapon = null;

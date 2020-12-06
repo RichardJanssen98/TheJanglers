@@ -17,7 +17,7 @@ public class Health : MonoBehaviour {
 
   // Start is called before the first frame update
   void Start() {
-
+        deathSoundSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
   }
 
   // Update is called once per frame
