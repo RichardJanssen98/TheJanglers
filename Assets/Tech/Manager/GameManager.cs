@@ -103,6 +103,7 @@ public class GameManager : Singleton<GameManager> {
         spawnIndex++;
         if (spawnIndex > elfSpawnPositions.Count - 1)
           spawnIndex = 0;
+        spawnTimer = 0.0f;
       }
     }
   }
