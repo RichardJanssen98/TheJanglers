@@ -8,7 +8,9 @@ public class Health : MonoBehaviour {
   public float maxHealth = 100;
   public float currentHealth;
   public event Action<float, float> OnHealthChanged;
-  public AudioSource deathSoundSource;
+  public AudioSource audioSource;
+
+    public AudioClip deathSoundClip;
 
   private void Awake() {
     currentHealth = maxHealth;
@@ -17,7 +19,7 @@ public class Health : MonoBehaviour {
 
   // Start is called before the first frame update
   void Start() {
-    deathSoundSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
+    audioSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
     Healthbar.LinkToHealthbar(this);
   }
 
@@ -46,7 +48,7 @@ public class Health : MonoBehaviour {
       case AgentType.Enemy:
         /// Play destruction effect.
         /// Destroy enemy obj.
-        deathSoundSource.Play();
+        audioSource.PlayOneShot(deathSoundClip);
         break;
     }
   }

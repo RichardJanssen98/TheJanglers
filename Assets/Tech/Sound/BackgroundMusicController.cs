@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class BackgroundMusicController : Singleton<BackgroundMusicController>
 {
-
-    public AudioSource introSoundtrack;
-    public AudioSource fightSoundtrack;
+    public AudioSource audioSource;
+    public AudioClip introSoundtrack;
+    public AudioClip fightSoundtrack;
 
     // Start is called before the first frame update
     void Start()
     {
-        introSoundtrack.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
-        fightSoundtrack.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
+        audioSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
+        audioSource.loop = true;
     }
 
     public void PlayIntroSoundtrack()
     {
-        introSoundtrack.loop = true;
-        introSoundtrack.Play();
+        audioSource.clip = introSoundtrack;
+        audioSource.Play();
     }
 
     public void PlayFightSoundtrack()
     {
-        introSoundtrack.Stop();
+        audioSource.Stop();
+        audioSource.clip = fightSoundtrack;
 
-        fightSoundtrack.loop = true;
-        fightSoundtrack.Play();
+        audioSource.Play();
     }
 }

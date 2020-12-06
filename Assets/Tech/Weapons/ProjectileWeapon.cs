@@ -6,7 +6,8 @@ public class ProjectileWeapon : Pickup {
   [SerializeField]
   private Projectile projectile;
 
-    public AudioSource shootingAudioSource;
+    public AudioSource audioSource;
+    public AudioClip shootingSoundClip;
 
   private float shootTimerStart = 0f;
   public float shootTimerCooldown = 1f;
@@ -18,7 +19,7 @@ public class ProjectileWeapon : Pickup {
 
     private void Start()
     {
-        shootingAudioSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
+        audioSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class ProjectileWeapon : Pickup {
       }
 
       float directionDeviation = 0;
-            shootingAudioSource.Play();
+            audioSource.PlayOneShot(shootingSoundClip);
 
       for (int i = 0; i < projectilesPerShot; i++) {
         Projectile projectileSpawned = Instantiate(projectile, this.transform.position, Quaternion.identity);

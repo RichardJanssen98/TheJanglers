@@ -241,7 +241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupsInRange: []
-  pickupAudioSource: {fileID: 3263298832592154953}
+  audioSource: {fileID: 3263298832592154953}
+  pickupSoundClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
 --- !u!82 &3263298832592154953
 AudioSource:
   m_ObjectHideFlags: 0
@@ -353,7 +354,8 @@ MonoBehaviour:
   agentType: 0
   maxHealth: 100
   currentHealth: 100
-  deathSoundSource: {fileID: 3263298832592154953}
+  audioSource: {fileID: 3263298832592154953}
+  deathSoundClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
 --- !u!1 &7098511320476841561
 GameObject:
   m_ObjectHideFlags: 0
