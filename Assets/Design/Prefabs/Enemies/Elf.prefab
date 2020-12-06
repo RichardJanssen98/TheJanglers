@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 293142885756790433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.78, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 293142886554958745}
   m_Father: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 293142885756790435}
   health: {fileID: 293142885756790434}
-  projectileWeapon: {fileID: 293142885756790447}
+  projectileWeapons: []
   behaviour: {fileID: 293142885756790432}
 --- !u!114 &293142885756790434
 MonoBehaviour:
@@ -84,12 +84,13 @@ MonoBehaviour:
   charSpriteRenderer: {fileID: 293142886554958744}
   walkAnimSpeed: 1
   spritesUp:
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: af074054bcb7111468d91c6444d61903, type: 3}
   spritesDown:
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 05cebdd7845d45744be23aa6c9128cfe, type: 3}
   spritesHorizontal:
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: beead9c29bb7e2841baa56a74d327eea, type: 3}
   overrideAnimations: 0
+  currentAnimation: []
   movementDirection: {x: 0, y: 0}
   movementSpeed: 5
 --- !u!114 &293142885756790432
@@ -122,6 +123,8 @@ MonoBehaviour:
   shootTimerCooldown: 1
   ammo: 10
   ammoConsumption: 1
+  projectilesPerShot: 1
+  projectileDamageOverride: 5
 --- !u!58 &5205134109802794809
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,7 +156,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -230,8 +233,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9528302, g: 0.52232593, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 05cebdd7845d45744be23aa6c9128cfe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
