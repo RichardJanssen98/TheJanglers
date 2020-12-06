@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8750199735359125394}
   - component: {fileID: 8750199735359125395}
+  - component: {fileID: 1230653813}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,11 +47,15 @@ MonoBehaviour:
   baseDifficulty: 1
   maxDifficulty: 1.5
   difficulty: 1
+  baseMaxElves: 2
+  maxElves: 2
+  spawnInterval: 6
   leftGameBound: -10.5
   rightGameBound: 10.5
   upperGameBound: 9
   lowerGameBound: -3.25
   gameFrozen: 1
+  elfSpawnPositions: []
   dialogues:
   - {fileID: 11400000, guid: 384381a06b9274124bc4742f1dd3fee9, type: 2}
   - {fileID: 11400000, guid: 5aedacf2258824dd4a7f9cf9bc4fcd92, type: 2}
@@ -61,3 +66,111 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 93b9fc4cfd20b45d7bf737e2e3038680, type: 2}
   - {fileID: 11400000, guid: b17ae63ce2630485f9b2b21ffd5a7c45, type: 2}
   - {fileID: 11400000, guid: f0eea19c8f5b147e8bf7569355fde0b2, type: 2}
+  gameOverLaughs:
+  - {fileID: 8300000, guid: 438987fc16cb5d9489165d2d032f974c, type: 3}
+  - {fileID: 8300000, guid: 4a25d98a1eef4774384040ff02786524, type: 3}
+  - {fileID: 8300000, guid: 1f6d81428729dd74aa8c2b61294cbc70, type: 3}
+  - {fileID: 8300000, guid: a8c4c79c6269fdd4cbd39276dffc29e0, type: 3}
+  - {fileID: 8300000, guid: a05b06c7329337a40b06093c5198d65a, type: 3}
+  audioSource: {fileID: 1230653813}
+  elfPrefab: {fileID: 293142885756790432, guid: fc7fabf89330d441abe16d4c0087260c, type: 3}
+  playerHealthBar: {fileID: 0}
+  bossHealthBar: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  gameCompletedPanel: {fileID: 0}
+--- !u!82 &1230653813
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750199735359125396}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
