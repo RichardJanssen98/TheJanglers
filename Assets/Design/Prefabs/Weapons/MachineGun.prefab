@@ -117,7 +117,7 @@ MonoBehaviour:
   ammo: 30
   ammoConsumption: 1
   projectilesPerShot: 1
-  projectileDamageOverride: 5
+  projectileDamageOverride: 2.5
 --- !u!58 &6452462537741209106
 CircleCollider2D:
   m_ObjectHideFlags: 0

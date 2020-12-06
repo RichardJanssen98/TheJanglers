@@ -44,6 +44,7 @@ public class GameManager : Singleton<GameManager> {
 
   private void Awake() {
     gameFrozen = true;
+        BackgroundMusicController.Instance.PlayIntroSoundtrack();
     Player.Instance.movement.overrideAnimations = true;
     gameOverPanel.transform.localScale = Vector3.zero;
     gameCompletedPanel.transform.localScale = Vector3.zero;
@@ -60,6 +61,7 @@ public class GameManager : Singleton<GameManager> {
   }
 
   public void StartGame() {
+        BackgroundMusicController.Instance.PlayFightSoundtrack();
     playerHealthBar.TweenLocalScale(Vector3.one, 0.5f).SetOnComplete(() => {
       difficulty = baseDifficulty;
       gameFrozen = false;

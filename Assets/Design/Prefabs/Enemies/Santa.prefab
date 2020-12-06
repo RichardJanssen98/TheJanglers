@@ -161,6 +161,7 @@ MonoBehaviour:
   currentHealth: 500
   audioSource: {fileID: 1114105156}
   invulnerable: 0
+  deathEffect: {fileID: 0}
   deathSoundClip: {fileID: 0}
 --- !u!114 &4012771452176607273
 MonoBehaviour:
@@ -182,8 +183,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2a2563bae2df61a45921b9778de34115, type: 3}
   spritesHorizontal:
   - {fileID: 21300000, guid: 2a2563bae2df61a45921b9778de34115, type: 3}
-  overrideAnimations: 0
   overridePlayAnimation: 0
+  spritesWeaponUp: []
+  spritesWeaponDown: []
+  spritesWeaponHorizontal: []
+  holdingWeapon: 0
+  overrideAnimations: 0
   mirror: 0
   currentAnimation: []
   movementDirection: {x: 0, y: 0}
@@ -266,9 +271,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPointParent: {fileID: 0}
-  projectile: {fileID: 3106109965736620734, guid: 7c8fdfa506903d145b6c5b05eca894a8, type: 3}
-  audioSource: {fileID: 0}
-  shootingSoundClip: {fileID: 0}
+  projectile: {fileID: 3106109965736620734, guid: f9fbdf65ec8b30745a81db5617811368, type: 3}
+  audioSource: {fileID: 1114105156}
+  shootingSoundClip: {fileID: 8300000, guid: 96b274c1b6aeef240915c464d5e593f1, type: 3}
+  SpritesUp: []
+  SpritesDown: []
+  SpritesHorizontal: []
   shootTimerCooldown: 10
   ammo: 99999
   ammoConsumption: 0
@@ -284,7 +292,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

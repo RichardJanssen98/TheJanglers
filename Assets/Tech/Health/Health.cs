@@ -28,9 +28,21 @@ public class Health : MonoBehaviour {
 
   // Update is called once per frame
   void Update() {
+        if (Application.isEditor == false)
+            return;
     if (Input.GetKeyDown(KeyCode.K)) {
-      TakeDamage(1);
+            if (agentType == AgentType.Player)
+            {
+                TakeDamage(100);
+            }
     }
+    if (Input.GetKey(KeyCode.G))
+        {
+            if (agentType == AgentType.Boss)
+            {
+                TakeDamage(500);
+            }
+        }
   }
 
   public void TakeDamage(float amount) {
@@ -54,11 +66,11 @@ public class Health : MonoBehaviour {
         GameManager.Instance.GameOver();
         break;
       case AgentType.Boss:
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
         GameManager.Instance.CompleteGame();
         break;
       case AgentType.Enemy:
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
         audioSource.PlayOneShot(deathSoundClip);
         gameObject.TweenDelayedInvoke(deathSoundClip.length, () => Destroy(gameObject));
         break;

@@ -74,6 +74,7 @@ MonoBehaviour:
   currentHealth: 10
   audioSource: {fileID: -4132476784159451129}
   invulnerable: 0
+  deathEffect: {fileID: 0}
   deathSoundClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
 --- !u!114 &293142885756790435
 MonoBehaviour:
@@ -133,7 +134,7 @@ MonoBehaviour:
   spawnPointParent: {fileID: 0}
   projectile: {fileID: 3106109965736620734, guid: 5a1535eb849902541b1b0879545f0f78, type: 3}
   audioSource: {fileID: -4132476784159451129}
-  shootingSoundClip: {fileID: 8300000, guid: 96b274c1b6aeef240915c464d5e593f1, type: 3}
+  shootingSoundClip: {fileID: 8300000, guid: 80c886a1d3debea46ad56fc41e4c6b70, type: 3}
   SpritesUp: []
   SpritesDown: []
   SpritesHorizontal: []

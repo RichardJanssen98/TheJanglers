@@ -117,7 +117,7 @@ MonoBehaviour:
   ammo: 3
   ammoConsumption: 1
   projectilesPerShot: 1
-  projectileDamageOverride: 20
+  projectileDamageOverride: 25
 --- !u!58 &2122305084393865590
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.8
   Loop: 0
   Mute: 0
   Spatialize: 0

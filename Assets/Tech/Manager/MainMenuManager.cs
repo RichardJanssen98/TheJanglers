@@ -22,7 +22,7 @@ public class MainMenuManager : MonoBehaviour {
     private void Update()
     {
         audioVolumeText.text = audioVolumeSlider.value + "%";
-        PlayerPrefs.SetFloat("Options_AudioVolume", audioVolumeSlider.value);
+        PlayerPrefs.SetFloat("Options_AudioVolume", audioVolumeSlider.value / 100f);
     }
 
     public void OpenSettings()
