@@ -18,7 +18,6 @@ public class InputManager : MonoBehaviour {
     Vector3 mouse = Input.mousePosition;
     Vector3 screenPoint = Camera.main.ScreenToWorldPoint(mouse);
     Vector2 lookDir = screenPoint - player.transform.position;
-    Debug.Log(lookDir);
 
     if (Mathf.Abs(lookDir.x) > Mathf.Abs(lookDir.y)) {
       player.movement.currentAnimation = player.movement.spritesHorizontal;

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a4c9cd43332465f901785f0352e07a, type: 3}
+  m_Name: Intro-05
+  m_EditorClassIdentifier: 
+  dialogues:
+  - text: Okay Santa, let's dance!
+    voice: {fileID: 8300000, guid: ada4d57b5d24cb04cbbf8dbdee78eb4f, type: 3}
+    onScreenDuration: 3
+    characterPosition: 0
+    keepVisible: 0
+  - text: Deck the halls with pain and bloodshed, muhahahah!
+    voice: {fileID: 8300000, guid: cec4a14444683cd4eb94c53de7767d4d, type: 3}
+    onScreenDuration: 5
+    characterPosition: 1
+    keepVisible: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a4c9cd43332465f901785f0352e07a, type: 3}
+  m_Name: Intro-09
+  m_EditorClassIdentifier: 
+  dialogues:
+  - text: Let's make this quick, I've got a turkey to carve!
+    voice: {fileID: 8300000, guid: 3785ddfb160cac44b92ec7f7e44b17d1, type: 3}
+    onScreenDuration: 5
+    characterPosition: 0
+    keepVisible: 0
+  - text: OoH, I'vE gOt A tUrKeY tO cArVe! Cool story, bro!
+    voice: {fileID: 8300000, guid: 24e663e9e76d55c40bb37ad678212df2, type: 3}
+    onScreenDuration: 5
+    characterPosition: 1
+    keepVisible: 0

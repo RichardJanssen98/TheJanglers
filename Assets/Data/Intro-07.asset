@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a4c9cd43332465f901785f0352e07a, type: 3}
+  m_Name: Intro-07
+  m_EditorClassIdentifier: 
+  dialogues:
+  - text: Hey Santa, where's your Christmas cheer?!
+    voice: {fileID: 8300000, guid: e3fbb111b18585a4fb13fe165b9cddf5, type: 3}
+    onScreenDuration: 3
+    characterPosition: 0
+    keepVisible: 0
+  - text: '''Tis the season to DIE!'
+    voice: {fileID: 8300000, guid: c7b65e58ad5ebdd4bafb779af307883e, type: 3}
+    onScreenDuration: 3
+    characterPosition: 1
+    keepVisible: 0

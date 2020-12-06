@@ -15,10 +15,26 @@ public class GameManager : Singleton<GameManager> {
 
   private const float difficultyStep = 0.1f;
 
-  public bool gameFrozen = false;
+  public bool gameFrozen = true;
+
+  public List<DialogueData> dialogues = new List<DialogueData>();
+
+  private void Awake() {
+    gameFrozen = true;
+    Player.Instance.movement.overrideAnimations = true;
+  }
+
+  public void StartIntro() {
+    gameFrozen = true;
+    int randomIndex = Random.Range(0, dialogues.Count);
+    DialogueUI.Instance.onComplete = StartGame;
+    DialogueUI.Instance.StartDialogue(dialogues[randomIndex]);
+  }
 
   public void StartGame() {
     difficulty = baseDifficulty;
+    gameFrozen = false;
+    Player.Instance.movement.overrideAnimations = false;
   }
 
   public void IncreaseDifficulty() {

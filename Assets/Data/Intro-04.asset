@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a4c9cd43332465f901785f0352e07a, type: 3}
+  m_Name: Intro-04
+  m_EditorClassIdentifier: 
+  dialogues:
+  - text: You're just a loser in a santa costume!
+    voice: {fileID: 8300000, guid: 8da5fee8dc4f2f64fab1be68376e2232, type: 3}
+    onScreenDuration: 3
+    characterPosition: 0
+    keepVisible: 0
+  - text: My wife made me this!
+    voice: {fileID: 8300000, guid: 3775836fcdb09e44e8589de1cc9b0b3d, type: 3}
+    onScreenDuration: 3
+    characterPosition: 1
+    keepVisible: 0

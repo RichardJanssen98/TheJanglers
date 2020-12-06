@@ -19,6 +19,8 @@ public class DialogueUI : Singleton<DialogueUI> {
   private int currentDialogueIndex;
   private Vector3 hidePosition;
 
+  public System.Action onComplete;
+
   private void Awake() {
   }
 
@@ -29,8 +31,8 @@ public class DialogueUI : Singleton<DialogueUI> {
   }
 
   private void ShowDialogue(Dialogue dialogue, bool instant = false) {
-    leftCharacter.enabled = dialogue.characterPosition == DialogueCharacter.Lewis;
-    rightCharacter.enabled = dialogue.characterPosition == DialogueCharacter.Simon;
+    leftCharacter.enabled = dialogue.characterPosition == DialogueCharacter.Simon;
+    rightCharacter.enabled = dialogue.characterPosition == DialogueCharacter.Lewis;
     Image charImg = leftCharacter.enabled ? leftCharacter : rightCharacter;
 
     if (leftCharacter.enabled)
@@ -72,9 +74,9 @@ public class DialogueUI : Singleton<DialogueUI> {
   }
 
   private void GoToNext(bool instant = false) {
-    Debug.Log(transform.position);
     currentDialogueIndex++;
     if (currentDialogueIndex == currentDialogue.dialogues.Count) {
+      onComplete?.Invoke();
       return;
     } else {
       ShowDialogue(currentDialogue.dialogues[currentDialogueIndex], instant);

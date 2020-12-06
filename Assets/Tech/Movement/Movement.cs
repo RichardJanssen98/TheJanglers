@@ -21,7 +21,8 @@ public class Movement : MonoBehaviour {
   // Start is called before the first frame update
   void Start() {
     currentSpriteIndex = 0;
-    currentAnimation = spritesDown;
+    if (currentAnimation.Count == 0)
+      currentAnimation = spritesDown;
   }
 
   // Update is called once per frame

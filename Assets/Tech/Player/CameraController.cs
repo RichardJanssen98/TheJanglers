@@ -21,6 +21,9 @@ public class CameraController : MonoBehaviour {
 
   // Update is called once per frame
   void Update() {
+    if (GameManager.Instance.gameFrozen == true)
+      return;
+
     Vector3 targetPosition = Player.Instance.transform.position + camOffset;
     Vector3 dir = targetPosition - transform.position;
     Vector3 newPosition = transform.position + (dir.normalized * camMoveSpeed) * Time.deltaTime;
