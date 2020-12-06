@@ -20,7 +20,14 @@ public class InputManager : MonoBehaviour {
     Vector2 lookDir = screenPoint - player.transform.position;
 
     if (Mathf.Abs(lookDir.x) > Mathf.Abs(lookDir.y)) {
-      player.movement.currentAnimation = player.movement.spritesHorizontal;
+            if (player.movement.holdingWeapon)
+            {
+                player.movement.currentAnimation = player.movement.spritesWeaponHorizontal;
+            }
+            else
+            {
+                player.movement.currentAnimation = player.movement.spritesHorizontal;
+            }
       if (lookDir.x < 0) {
         player.movement.mirror = false;
       } else {
@@ -29,9 +36,24 @@ public class InputManager : MonoBehaviour {
     } else {
       player.movement.mirror = false;
       if (lookDir.y > 0) {
-        player.movement.currentAnimation = player.movement.spritesUp;
+                if (player.movement.holdingWeapon)
+                {
+                    player.movement.currentAnimation = player.movement.spritesWeaponUp;
+                }
+                else
+                {
+                    player.movement.currentAnimation = player.movement.spritesUp;
+                }
+        
       } else {
-        player.movement.currentAnimation = player.movement.spritesDown;
+                if (player.movement.holdingWeapon)
+                {
+                    player.movement.currentAnimation = player.movement.spritesWeaponDown;
+                }
+                else
+                {
+                    player.movement.currentAnimation = player.movement.spritesDown;
+                }
       }
     }
 

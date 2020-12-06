@@ -9,6 +9,10 @@ public class ProjectileWeapon : Pickup {
     public AudioSource audioSource;
     public AudioClip shootingSoundClip;
 
+    public List<Sprite> SpritesUp;
+    public List<Sprite> SpritesDown;
+    public List<Sprite> SpritesHorizontal;
+
   private float shootTimerStart = 0f;
   public float shootTimerCooldown = 1f;
   public float ammo = 10f;
@@ -27,12 +31,17 @@ public class ProjectileWeapon : Pickup {
     if (ammo <= 0) {
       Destroy(this.gameObject);
       Player.Instance.projectileWeapon = null;
+            Player.Instance.movement.holdingWeapon = false;
     }
   }
 
   public override void PickupObject() {
     base.PickupObject();
     Player.Instance.projectileWeapon = this;
+        Player.Instance.movement.spritesWeaponUp = SpritesUp;
+        Player.Instance.movement.spritesWeaponDown = SpritesDown;
+        Player.Instance.movement.spritesWeaponHorizontal = SpritesHorizontal;
+        Player.Instance.movement.holdingWeapon = true;
     AmmoBar.Instance.ClearAmmo();
     AmmoBar.Instance.FillUpAmmo((int)ammo);
   }

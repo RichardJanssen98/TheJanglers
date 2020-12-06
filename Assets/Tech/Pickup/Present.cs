@@ -20,7 +20,7 @@ public class Present : Pickup
 
     public override void PickupObject()
     {
-        int weaponNumber = Random.Range(0, projectileWeaponsToSpawn.Count - 1); //-1 because it starts counting at 0
+        int weaponNumber = Random.Range(0, projectileWeaponsToSpawn.Count); //-1 because it starts counting at 0
 
         ProjectileWeapon projectileWeaponToSpawn = projectileWeaponsToSpawn[weaponNumber];
 

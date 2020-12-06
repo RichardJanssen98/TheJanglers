@@ -2,95 +2,162 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour {
-  public SpriteRenderer charSpriteRenderer;
-  public float walkAnimSpeed = 1;
-  public List<Sprite> spritesUp = new List<Sprite>();
-  public List<Sprite> spritesDown = new List<Sprite>();
-  public List<Sprite> spritesHorizontal = new List<Sprite>();
-  public bool overrideAnimations = false;
-  public bool overridePlayAnimation = false;
-  public bool mirror = false;
+public class Movement : MonoBehaviour
+{
+    public SpriteRenderer charSpriteRenderer;
+    public float walkAnimSpeed = 1;
+    public List<Sprite> spritesUp = new List<Sprite>();
+    public List<Sprite> spritesDown = new List<Sprite>();
+    public List<Sprite> spritesHorizontal = new List<Sprite>();
+    public bool overridePlayAnimation = false;
+    public List<Sprite> spritesWeaponUp = new List<Sprite>();
+    public List<Sprite> spritesWeaponDown = new List<Sprite>();
+    public List<Sprite> spritesWeaponHorizontal = new List<Sprite>();
+    public bool holdingWeapon = false;
+    public bool overrideAnimations = false;
+    public bool mirror = false;
+    private List<Sprite> lastAnimation = new List<Sprite>();
 
-  public List<Sprite> currentAnimation;
-  private int currentSpriteIndex;
-  private float walkAnimTime;
+    public List<Sprite> currentAnimation;
+    private int currentSpriteIndex;
+    private float walkAnimTime;
 
-  public Vector2 movementDirection;
-  public float movementSpeed = 5f;
+    public Vector2 movementDirection;
+    public float movementSpeed = 5f;
 
-  // Start is called before the first frame update
-  void Start() {
-    currentSpriteIndex = 0;
-    if (currentAnimation.Count == 0)
-      currentAnimation = spritesDown;
-  }
-
-  // Update is called once per frame
-  void Update() {
-    Move();
-    if (movementDirection.magnitude > 0.0f && overrideAnimations == false) {
-      UpdateAnimation();
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentSpriteIndex = 0;
+        if (currentAnimation.Count == 0)
+            currentAnimation = spritesDown;
     }
 
-    if (mirror)
-      charSpriteRenderer.transform.localScale = new Vector3(-1, 1, 1);
-    else
-      charSpriteRenderer.transform.localScale = new Vector3(1, 1, 1);
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        if (movementDirection.magnitude > 0.0f && overrideAnimations == false)
+        {
+            if (!holdingWeapon)
+            {
+                UpdateAnimation();
+            }
+            else
+            {
+                UpdateWeaponAnimation();
+            }
 
-    if (overridePlayAnimation == false)
-      PlayAnimation();
-  }
+        }
 
-  public void SetMovementVector(Vector2 movement) {
-    movementDirection = movement;
-  }
+        if (mirror)
+            charSpriteRenderer.transform.localScale = new Vector3(-1, 1, 1);
+        else
+            charSpriteRenderer.transform.localScale = new Vector3(1, 1, 1);
 
-  private void Move() {
-    Vector3 newPosition = transform.position + ((Vector3)movementDirection * (movementSpeed * Time.deltaTime));
-    if (newPosition.x < GameManager.Instance.leftGameBound) {
-      newPosition.x = GameManager.Instance.leftGameBound;
-    } else if (newPosition.x > GameManager.Instance.rightGameBound) {
-      newPosition.x = GameManager.Instance.rightGameBound;
+        if (overridePlayAnimation == false)
+            PlayAnimation();
     }
 
-    if (newPosition.y > GameManager.Instance.upperGameBound) {
-      newPosition.y = GameManager.Instance.upperGameBound;
-    } else if (newPosition.y < GameManager.Instance.lowerGameBound) {
-      newPosition.y = GameManager.Instance.lowerGameBound;
+    public void SetMovementVector(Vector2 movement)
+    {
+        movementDirection = movement;
     }
 
-    transform.position = newPosition;
-  }
+    private void Move()
+    {
+        Vector3 newPosition = transform.position + ((Vector3)movementDirection * (movementSpeed * Time.deltaTime));
+        if (newPosition.x < GameManager.Instance.leftGameBound)
+        {
+            newPosition.x = GameManager.Instance.leftGameBound;
+        }
+        else if (newPosition.x > GameManager.Instance.rightGameBound)
+        {
+            newPosition.x = GameManager.Instance.rightGameBound;
+        }
 
-  private void UpdateAnimation() {
-    if (Mathf.Abs(movementDirection.y) > Mathf.Abs(movementDirection.x)) {
-      mirror = false;
-      if (movementDirection.y > 0)
-        currentAnimation = spritesUp;
-      else
-        currentAnimation = spritesDown;
-    } else {
-      if (movementDirection.x < 0) {
-        mirror = false;
-        currentAnimation = spritesHorizontal;
-      } else {
-        mirror = true;
-        currentAnimation = spritesHorizontal;
-      }
-    }
-  }
+        if (newPosition.y > GameManager.Instance.upperGameBound)
+        {
+            newPosition.y = GameManager.Instance.upperGameBound;
+        }
+        else if (newPosition.y < GameManager.Instance.lowerGameBound)
+        {
+            newPosition.y = GameManager.Instance.lowerGameBound;
+        }
 
-  private void PlayAnimation() {
-    walkAnimTime += Time.deltaTime * walkAnimSpeed;
-    if (walkAnimTime >= 1) {
-      walkAnimTime = 0;
-      currentSpriteIndex++;
+        transform.position = newPosition;
     }
 
-    if (currentSpriteIndex >= currentAnimation.Count || movementDirection.magnitude == 0)
-      currentSpriteIndex = 0;
+    private void UpdateAnimation()
+    {
+        if (Mathf.Abs(movementDirection.y) > Mathf.Abs(movementDirection.x))
+        {
+            mirror = false;
+            if (movementDirection.y > 0)
+                currentAnimation = spritesUp;
+            else
+            {
+                currentAnimation = spritesDown;
+            }
+        }
+        else
+        {
+            if (movementDirection.x < 0)
+            {
+                mirror = false;
+                currentAnimation = spritesHorizontal;
 
-    charSpriteRenderer.sprite = currentAnimation[currentSpriteIndex];
-  }
+            }
+            else
+            {
+                mirror = true;
+                currentAnimation = spritesHorizontal;
+            }
+        }
+    }
+
+    private void UpdateWeaponAnimation()
+    {
+        if (Mathf.Abs(movementDirection.y) > Mathf.Abs(movementDirection.x))
+        {
+            mirror = false;
+            if (movementDirection.y > 0)
+            {
+                currentAnimation = spritesWeaponUp;
+            }
+            else
+            {
+                currentAnimation = spritesWeaponDown;
+            }
+        }
+        else
+        {
+            if (movementDirection.x < 0)
+            {
+                mirror = false;
+                currentAnimation = spritesWeaponHorizontal;
+            }
+            else
+            {
+                mirror = true;
+                currentAnimation = spritesWeaponHorizontal;
+            }
+        }
+    }
+
+
+    private void PlayAnimation()
+    {
+        walkAnimTime += Time.deltaTime * walkAnimSpeed;
+        if (walkAnimTime >= 1)
+        {
+            walkAnimTime = 0;
+            currentSpriteIndex++;
+        }
+
+        if (currentSpriteIndex >= currentAnimation.Count || movementDirection.magnitude == 0)
+            currentSpriteIndex = 0;
+
+        charSpriteRenderer.sprite = currentAnimation[currentSpriteIndex];
+    }
 }
