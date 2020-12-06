@@ -10,7 +10,6 @@ public class Player : Singleton<Player> {
 
   // Start is called before the first frame update
   void Start() {
-    DontDestroyOnLoad(this);
   }
 
   public void OnTriggerEnter2D(Collider2D collision) {
