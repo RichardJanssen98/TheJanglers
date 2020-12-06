@@ -8,16 +8,17 @@ public class Health : MonoBehaviour {
   public float maxHealth = 100;
   public float currentHealth;
   public event Action<float, float> OnHealthChanged;
-    public AudioSource deathSoundSource;
+  public AudioSource deathSoundSource;
 
   private void Awake() {
     currentHealth = maxHealth;
-    Healthbar.LinkToHealthbar(this);
+
   }
 
   // Start is called before the first frame update
   void Start() {
-        deathSoundSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
+    deathSoundSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
+    Healthbar.LinkToHealthbar(this);
   }
 
   // Update is called once per frame
@@ -43,9 +44,9 @@ public class Health : MonoBehaviour {
         /// Open level complete popup.
         break;
       case AgentType.Enemy:
-                /// Play destruction effect.
-                /// Destroy enemy obj.
-                deathSoundSource.Play();
+        /// Play destruction effect.
+        /// Destroy enemy obj.
+        deathSoundSource.Play();
         break;
     }
   }
