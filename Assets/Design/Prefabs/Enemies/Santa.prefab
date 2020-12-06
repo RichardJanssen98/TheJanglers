@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 1199890430885623712}
   - component: {fileID: 249998764}
   - component: {fileID: 1114105156}
+  - component: {fileID: 3423028603794034852}
   m_Layer: 0
   m_Name: Santa
   m_TagString: Untagged
@@ -159,6 +160,7 @@ MonoBehaviour:
   maxHealth: 500
   currentHealth: 500
   audioSource: {fileID: 1114105156}
+  invulnerable: 0
   deathSoundClip: {fileID: 0}
 --- !u!114 &4012771452176607273
 MonoBehaviour:
@@ -368,6 +370,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3423028603794034852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012771452176607275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873a9a84a9033499fb2fccec23427ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageOnTouch: 10
 --- !u!1 &4012771452368621434
 GameObject:
   m_ObjectHideFlags: 0
