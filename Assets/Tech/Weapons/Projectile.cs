@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour {
     }
 
     transform.position += (Vector3)direction * (movementSpeed * Time.deltaTime);
+        transform.up = direction;
   }
 
 }

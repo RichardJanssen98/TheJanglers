@@ -99,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPointParent: {fileID: 0}
   projectile: {fileID: 3106109965736620734, guid: 7c8fdfa506903d145b6c5b05eca894a8, type: 3}
-  audioSource: {fileID: 0}
-  shootingSoundClip: {fileID: 0}
+  audioSource: {fileID: -1577651094653078268}
+  shootingSoundClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
   SpritesUp:
   - {fileID: 21300000, guid: 62d33390bcf1b6d4cbd9968d48232f0a, type: 3}
   - {fileID: 21300000, guid: 1ff3dee267965f94e8908c7d45e01506, type: 3}
@@ -144,7 +144,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

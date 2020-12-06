@@ -71,6 +71,7 @@ public class ProjectileWeapon : Pickup {
           directionToGo = new Vector2(direction.x + directionDeviation, direction.y + directionDeviation);
         }
         projectileSpawned.direction = directionToGo;
+               
       }
 
 
