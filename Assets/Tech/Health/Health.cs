@@ -11,6 +11,7 @@ public class Health : MonoBehaviour {
   public event Action<float, float> OnHealthChanged;
   public AudioSource audioSource;
   public bool invulnerable;
+  public GameObject deathEffect;
 
   public AudioClip deathSoundClip;
 
@@ -50,16 +51,16 @@ public class Health : MonoBehaviour {
   public void Kill() {
     switch (agentType) {
       case AgentType.Player:
-        /// Game over!
+        GameManager.Instance.GameOver();
         break;
       case AgentType.Boss:
-        /// Destroy boss obj.
-        /// Open level complete popup.
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        GameManager.Instance.CompleteGame();
         break;
       case AgentType.Enemy:
-        /// Play destruction effect.
-        /// Destroy enemy obj.
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         audioSource.PlayOneShot(deathSoundClip);
+        gameObject.TweenDelayedInvoke(deathSoundClip.length, () => Destroy(gameObject));
         break;
     }
   }
