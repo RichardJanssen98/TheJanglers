@@ -29,8 +29,8 @@ public class DialogueUI : Singleton<DialogueUI> {
   }
 
   private void ShowDialogue(Dialogue dialogue, bool instant = false) {
-    leftCharacter.enabled = dialogue.characterPosition == DialogueCharacterPosition.Left;
-    rightCharacter.enabled = dialogue.characterPosition == DialogueCharacterPosition.Right;
+    leftCharacter.enabled = dialogue.characterPosition == DialogueCharacter.Lewis;
+    rightCharacter.enabled = dialogue.characterPosition == DialogueCharacter.Simon;
     Image charImg = leftCharacter.enabled ? leftCharacter : rightCharacter;
 
     if (leftCharacter.enabled)
@@ -40,7 +40,6 @@ public class DialogueUI : Singleton<DialogueUI> {
 
     transform.position = hidePosition;
 
-    charImg.sprite = dialogue.characterSprite;
     text.text = dialogue.text;
 
     if (instant) {

@@ -4,15 +4,14 @@ using UnityEngine;
 
 [System.Serializable]
 public class Dialogue {
-  public Sprite characterSprite;
   public string text;
   public AudioClip voice;
   public float onScreenDuration;
-  public DialogueCharacterPosition characterPosition;
+  public DialogueCharacter characterPosition;
   public bool keepVisible;
 }
 
-public enum DialogueCharacterPosition {
-  Left,
-  Right
+public enum DialogueCharacter {
+  Lewis,
+  Simon
 }
