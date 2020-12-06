@@ -44,7 +44,20 @@ public class Movement : MonoBehaviour {
   }
 
   private void Move() {
-    transform.position = transform.position + ((Vector3)movementDirection * (movementSpeed * Time.deltaTime));
+    Vector3 newPosition = transform.position + ((Vector3)movementDirection * (movementSpeed * Time.deltaTime));
+    if (newPosition.x < GameManager.Instance.leftGameBound) {
+      newPosition.x = GameManager.Instance.leftGameBound;
+    } else if (newPosition.x > GameManager.Instance.rightGameBound) {
+      newPosition.x = GameManager.Instance.rightGameBound;
+    }
+
+    if (newPosition.y > GameManager.Instance.upperGameBound) {
+      newPosition.y = GameManager.Instance.upperGameBound;
+    } else if (newPosition.y < GameManager.Instance.lowerGameBound) {
+      newPosition.y = GameManager.Instance.lowerGameBound;
+    }
+
+    transform.position = newPosition;
   }
 
   private void UpdateAnimation() {
