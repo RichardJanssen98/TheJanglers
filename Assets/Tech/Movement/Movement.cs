@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour {
   public List<Sprite> spritesDown = new List<Sprite>();
   public List<Sprite> spritesHorizontal = new List<Sprite>();
   public bool overrideAnimations = false;
+  public bool overridePlayAnimation = false;
   public bool mirror = false;
 
   public List<Sprite> currentAnimation;
@@ -37,7 +38,8 @@ public class Movement : MonoBehaviour {
     else
       charSpriteRenderer.transform.localScale = new Vector3(1, 1, 1);
 
-    PlayAnimation();
+    if (overridePlayAnimation == false)
+      PlayAnimation();
   }
 
   public void SetMovementVector(Vector2 movement) {

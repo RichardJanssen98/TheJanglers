@@ -7,6 +7,10 @@ using UnityEngine;
 /// </summary>
 public class SantaBehaviour : AIBehaviour {
   public List<Sprite> standingAnimation = new List<Sprite>();
+  public List<Sprite> chargeAnimation = new List<Sprite>();
+  public List<Sprite> attackAnimation = new List<Sprite>();
+  public Sprite lungeAnimation;
+  public float shootTime = 1;
 
   public List<Vector3> movementPoints = new List<Vector3>();
   public float lungeSpeed = 20;
@@ -16,12 +20,14 @@ public class SantaBehaviour : AIBehaviour {
   private float timeBetweenLunges;
   private Vector3 lastPlayerPosition;
   private bool isLunging;
+  private bool isShooting;
   private Vector3 moveDirection = Vector3.zero;
 
   private float baseLungeTime;
   private float baseLungeSpeed;
   private bool canLunge = false;
   private float lastMoveSpeed;
+  private float lastShotTime;
 
   private float lastDifficultyIncreaseStep = 1;
   private float healthDifficultyIncreaseStep = 0.25f;
@@ -29,8 +35,6 @@ public class SantaBehaviour : AIBehaviour {
   // Start is called before the first frame update
   void Start() {
     lastLungeTime = Time.time;
-
-
   }
 
   private void CheckHealthDifficultyIncrease(float current, float max) {
@@ -47,8 +51,10 @@ public class SantaBehaviour : AIBehaviour {
     baseLungeTime = 4;
     timeBetweenLunges = 4;
     lastLungeTime = Time.time;
+    lastShotTime = Time.time;
     controller.movement.movementSpeed = 0;
     controller.movement.overrideAnimations = true;
+    controller.movement.overridePlayAnimation = false;
     controller.movement.currentAnimation = standingAnimation;
   }
 
@@ -67,16 +73,14 @@ public class SantaBehaviour : AIBehaviour {
 
     if (!isLunging) {
       UpdateMovement();
+      if (Time.time - lastShotTime > shootTime && !isShooting) {
+        ShootAtPlayer();
+      }
     } else {
       UpdateLunging();
     }
 
     controller.movement.SetMovementVector(moveDirection);
-
-    foreach (ProjectileWeapon weapon in controller.projectileWeapons) {
-      if (weapon.enabled)
-        weapon.Shoot((Player.Instance.transform.position - transform.position).normalized, AgentType.Boss);
-    }
   }
 
   private void UpdateMovement() {
@@ -94,6 +98,7 @@ public class SantaBehaviour : AIBehaviour {
   public override void UpdateDifficulty() {
     base.UpdateDifficulty();
     controller.movement.overrideAnimations = false;
+    controller.movement.overridePlayAnimation = false;
     lastLungeTime = Time.time;
     canLunge = true;
     lungeSpeed = baseLungeSpeed * GameManager.Instance.difficulty;
@@ -108,10 +113,17 @@ public class SantaBehaviour : AIBehaviour {
     if (isLunging)
       return;
     lastMoveSpeed = controller.movement.movementSpeed;
-    lastPlayerPosition = Player.Instance.transform.position;
-    controller.movement.overrideAnimations = true;
-    controller.movement.movementSpeed = lungeSpeed;
-    isLunging = true;
+    controller.movement.movementSpeed = 0;
+
+    StopAllCoroutines();
+    StartCoroutine(CycleThroughAnimation(chargeAnimation, 0.5f, () => {
+      lastPlayerPosition = Player.Instance.transform.position;
+      controller.movement.overrideAnimations = true;
+      controller.movement.overridePlayAnimation = true;
+      controller.movement.movementSpeed = lungeSpeed;
+      isLunging = true;
+      controller.movement.charSpriteRenderer.sprite = lungeAnimation;
+    }));
   }
 
   private void UpdateLunging() {
@@ -120,6 +132,47 @@ public class SantaBehaviour : AIBehaviour {
     if (distance <= 0.1f) {
       isLunging = false;
       controller.movement.movementSpeed = lastMoveSpeed;
+      controller.movement.overrideAnimations = false;
+      controller.movement.overridePlayAnimation = false;
     }
+  }
+
+  private void ShootAtPlayer() {
+    isShooting = true;
+    controller.movement.overrideAnimations = true;
+    controller.movement.overridePlayAnimation = true;
+
+    StopAllCoroutines();
+    StartCoroutine(CycleThroughAnimation(attackAnimation, 1f, () => {
+      lastShotTime = Time.time;
+      isShooting = false;
+      foreach (ProjectileWeapon weapon in controller.projectileWeapons)
+        weapon.Shoot(transform.position - lastPlayerPosition, AgentType.Boss);
+      IdleStand();
+    }));
+  }
+
+  private void IdleStand() {
+    if (canLunge) {
+      controller.movement.overrideAnimations = false;
+      controller.movement.overridePlayAnimation = false;
+      return;
+    }
+
+    StopAllCoroutines();
+    StartCoroutine(CycleThroughAnimation(standingAnimation, 0.5f, () => {
+      IdleStand();
+    }));
+  }
+
+  private IEnumerator CycleThroughAnimation(List<Sprite> animation, float duration, System.Action callback) {
+    int index = 0;
+    while (index < animation.Count) {
+      controller.movement.charSpriteRenderer.sprite = animation[index];
+      float animCount = animation.Count;
+      index++;
+      yield return new WaitForSeconds(duration / animCount);
+    }
+    callback?.Invoke();
   }
 }
