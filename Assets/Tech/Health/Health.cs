@@ -8,6 +8,7 @@ public class Health : MonoBehaviour {
   public float maxHealth = 100;
   public float currentHealth;
   public event Action<float, float> OnHealthChanged;
+    public AudioSource deathSoundSource;
 
   private void Awake() {
     currentHealth = maxHealth;
@@ -42,8 +43,9 @@ public class Health : MonoBehaviour {
         /// Open level complete popup.
         break;
       case AgentType.Enemy:
-        /// Play destruction effect.
-        /// Destroy enemy obj.
+                /// Play destruction effect.
+                /// Destroy enemy obj.
+                deathSoundSource.Play();
         break;
     }
   }

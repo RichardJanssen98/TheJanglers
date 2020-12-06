@@ -6,6 +6,8 @@ public class ProjectileWeapon : Pickup {
   [SerializeField]
   private Projectile projectile;
 
+    public AudioSource shootingAudioSource;
+
   private float shootTimerStart = 0f;
   public float shootTimerCooldown = 1f;
   public float ammo = 10f;
@@ -37,6 +39,7 @@ public class ProjectileWeapon : Pickup {
       }
 
       float directionDeviation = 0;
+            shootingAudioSource.Play();
 
       for (int i = 0; i < projectilesPerShot; i++) {
         Projectile projectileSpawned = Instantiate(projectile, this.transform.position, Quaternion.identity);
