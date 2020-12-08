@@ -42,6 +42,7 @@ public class ProjectileWeapon : Pickup {
         Player.Instance.movement.spritesWeaponDown = SpritesDown;
         Player.Instance.movement.spritesWeaponHorizontal = SpritesHorizontal;
         Player.Instance.movement.holdingWeapon = true;
+        this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
     AmmoBar.Instance.ClearAmmo();
     AmmoBar.Instance.FillUpAmmo((int)ammo);
   }

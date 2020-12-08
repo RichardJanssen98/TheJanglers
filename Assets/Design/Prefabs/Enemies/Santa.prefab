@@ -281,7 +281,7 @@ MonoBehaviour:
   ammo: 99999
   ammoConsumption: 0
   projectilesPerShot: 1
-  projectileDamageOverride: 5
+  projectileDamageOverride: 10
 --- !u!82 &1114105156
 AudioSource:
   m_ObjectHideFlags: 0

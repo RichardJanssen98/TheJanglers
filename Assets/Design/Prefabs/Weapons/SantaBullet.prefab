@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentType: 0
-  damage: 5
+  damage: 10
   movementSpeed: 5
   trackPlayer: 1
   trackTimerCooldown: 2
   direction: {x: 0, y: 0}
-  lifeTime: 10
+  lifeTime: 20
 --- !u!61 &1435968851034854735
 BoxCollider2D:
   m_ObjectHideFlags: 0

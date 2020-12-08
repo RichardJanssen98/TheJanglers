@@ -22,6 +22,7 @@ public class DialogueUI : Singleton<DialogueUI> {
   public System.Action onComplete;
 
   private void Awake() {
+        audioSource.volume = PlayerPrefs.GetFloat("Options_AudioVolume");
   }
 
   public void StartDialogue(DialogueData dialogue) {
