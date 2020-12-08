@@ -74,7 +74,7 @@ MonoBehaviour:
   currentHealth: 10
   audioSource: {fileID: -4132476784159451129}
   invulnerable: 0
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 1088276317075859809, guid: 36c59593af86481499f6eb85a7266d24, type: 3}
   deathSoundClip: {fileID: 8300000, guid: 0f3bca92c8a1a134a8598c3a62e373ea, type: 3}
 --- !u!114 &293142885756790435
 MonoBehaviour:
