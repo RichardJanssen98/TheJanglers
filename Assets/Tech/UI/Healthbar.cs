@@ -35,17 +35,14 @@ public class Healthbar : MonoBehaviour {
   }
 
   public void Initialize() {
-        Debug.Log("Start initializing" + initialized);
     if (initialized)
       return;
 
     agentHealth.OnHealthChanged += OnHealthChanged;
-        Debug.Log("Added Event to Healthbar");
 
     healthBarFill.TweenImageFillAmount(1, 0.5f).SetFrom(0);
 
     initialized = true;
-        Debug.Log("Done initializing" + initialized, this);
   }
 
   public void OnHealthChanged(float health, float maxHealth) {
@@ -54,8 +51,8 @@ public class Healthbar : MonoBehaviour {
     healthBarFill.TweenGraphicColor(barColor, 0.5f);
   }
 
-    public void Deinitialize()
+    private void OnDestroy()
     {
-        //initialized = false;
+        healthbars.Remove(this);
     }
 }

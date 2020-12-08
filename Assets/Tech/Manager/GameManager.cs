@@ -129,15 +129,11 @@ public class GameManager : Singleton<GameManager>
 
     public void GoToMenu()
     {
-        playerHealthBar.GetComponent<Healthbar>().Deinitialize();
-        bossHealthBar.GetComponent<Healthbar>().Deinitialize();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void Replay()
     {
-        playerHealthBar.GetComponent<Healthbar>().Deinitialize();
-        bossHealthBar.GetComponent<Healthbar>().Deinitialize();
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 }
