@@ -18,6 +18,11 @@ public class MainMenuManager : MonoBehaviour {
   public void QuitGame() {
     Application.Quit();
   }
+    private void Start()
+    {
+        float audioVolume = PlayerPrefs.GetFloat("Options_AudioVolume");
+        audioVolumeSlider.value = audioVolume * 100f;
+    }
 
     private void Update()
     {
