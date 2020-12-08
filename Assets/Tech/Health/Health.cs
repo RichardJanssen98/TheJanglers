@@ -95,8 +95,15 @@ public class Health : MonoBehaviour {
     Projectile projectile = collision.GetComponent<Projectile>();
 
     if (projectile != null && projectile.agentType != this.agentType) {
-      TakeDamage(projectile.damage);
-      Destroy(projectile.gameObject);
+            if (this.agentType == AgentType.Boss && projectile.agentType == AgentType.Enemy)
+            {
+                Destroy(projectile.gameObject);
+            }
+            else
+            {
+                TakeDamage(projectile.damage);
+                Destroy(projectile.gameObject);
+            }
     }
   }
 }

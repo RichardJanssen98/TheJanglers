@@ -45,7 +45,6 @@ public class Healthbar : MonoBehaviour {
   }
 
   public void OnHealthChanged(float health, float maxHealth) {
-    Debug.Log(health);
     healthBarFill.TweenImageFillAmount(health / maxHealth, 0.5f);
     Color barColor = Color.Lerp(healthbarColorMin, healthbarColorMax, health / maxHealth);
     healthBarFill.TweenGraphicColor(barColor, 0.5f);

@@ -89,8 +89,8 @@ public class GameManager : Singleton<GameManager> {
 
   public void CompleteGame() {
     gameFrozen = true;
-    HideBars();
-    gameCompletedPanel.TweenLocalScale(Vector3.one, 0.5f).SetEaseBackOut();
+        HideBars();
+        gameCompletedPanel.TweenLocalScale(Vector3.one, 0.5f).SetEaseBackOut();
   }
 
   private void Update() {
